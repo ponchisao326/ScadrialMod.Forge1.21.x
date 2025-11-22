@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.75,
+  "group": "tin",
+  "ingredient": {
+    "item": "scadrialmod:raw_tin"
+  },
+  "result": {
+    "id": "scadrialmod:tin"
+  }
+}

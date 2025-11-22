@@ -335,11 +335,24 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LERASIUM = ITEMS.register("lerasium",
             () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> ARMONIUM = ITEMS.register("armonium",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> TRELLIUM = ITEMS.register("trellium",
+    public static final RegistryObject<Item> ARMONIUM_INGOT = ITEMS.register("armonium_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ARMONIUM_NUGGET = ITEMS.register("armonium_nugget",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ARMONIUM_SHAVINGS = ITEMS.register("armonium_shavings",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> TRELLIUM = ITEMS.register("trellium",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TRELLIUM_INGOT = ITEMS.register("trellium_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TRELLIUM_NUGGET = ITEMS.register("trellium_nugget",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TRELLIUM_SHAVINGS = ITEMS.register("trellium_shavings",
+            () -> new Item(new Item.Properties()));
 
 
 //Allomancy
@@ -352,6 +365,8 @@ public class ModItems {
     public static final RegistryObject<Item> COIN = ITEMS.register("coin",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> COIN_BAG = ITEMS.register("coin_bag",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DUELLING_CANE = ITEMS.register("duelling_cane",
             () -> new Item(new Item.Properties()));
 
 

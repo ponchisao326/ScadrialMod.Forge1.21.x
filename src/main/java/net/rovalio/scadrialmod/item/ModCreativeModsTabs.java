@@ -15,9 +15,9 @@ public class ModCreativeModsTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MOD_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ScadrialMod.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> SCADRIAL_ITEMS_TAB = CREATIVE_MOD_TABS.register("scadrial_items_tab",
+    public static final RegistryObject<CreativeModeTab> SCADRIAL_TAB = CREATIVE_MOD_TABS.register("scadrial_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SCADRIAL_GLYPH.get()))
-                    .title(Component.translatable("creativetab.scadrialmod.scadrial_items"))
+                    .title(Component.translatable("creativetab.scadrialmod.scadrial"))
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(ModItems.COAL_DUST.get());
@@ -29,9 +29,9 @@ public class ModCreativeModsTabs {
                     })
                     .build());
 
-    public static final RegistryObject<CreativeModeTab> METALURGY_ITEMS_TAB = CREATIVE_MOD_TABS.register("metalurgy_items_tab",
+    public static final RegistryObject<CreativeModeTab> METALURGY_TAB = CREATIVE_MOD_TABS.register("metalurgy_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SCADRIAL_GLYPH.get()))
-                    .title(Component.translatable("creativetab.scadrialmod.metalurgy_items"))
+                    .title(Component.translatable("creativetab.scadrialmod.metalurgy"))
                     .displayItems((itemDisplayParameters, output) -> {
 
                     //Ores
@@ -150,8 +150,6 @@ public class ModCreativeModsTabs {
                         output.accept(ModBlocks.BISMUTH_BLOCK.get());
                         output.accept(ModBlocks.SILVER_BLOCK.get());
 
-                        output.accept(ModBlocks.ARMONIUM_BLOCK.get());
-
                     //Metal Ingots
                         output.accept(Items.IRON_BLOCK);
                         output.accept(ModItems.STEEL_INGOT.get());
@@ -236,20 +234,31 @@ public class ModCreativeModsTabs {
                     //Divine Metals
                         output.accept(ModItems.ATIUM.get());
                         output.accept(ModItems.LERASIUM.get());
+
                         output.accept(ModItems.ARMONIUM.get());
+                        output.accept(ModBlocks.ARMONIUM_BLOCK.get());
+                        output.accept(ModItems.ARMONIUM_INGOT.get());
+                        output.accept(ModItems.ARMONIUM_NUGGET.get());
+                        output.accept(ModItems.ARMONIUM_SHAVINGS.get());
+
                         output.accept(ModItems.TRELLIUM.get());
+                        output.accept(ModBlocks.TRELLIUM_BLOCK.get());
+                        output.accept(ModItems.TRELLIUM_INGOT.get());
+                        output.accept(ModItems.TRELLIUM_NUGGET.get());
+                        output.accept(ModItems.TRELLIUM_SHAVINGS.get());
                     })
                     .build());
 
-    public static final RegistryObject<CreativeModeTab> ALLOMANCY_ITEMS_TAB = CREATIVE_MOD_TABS.register("allomancy_items_tab",
+    public static final RegistryObject<CreativeModeTab> ALLOMANCY_TAB = CREATIVE_MOD_TABS.register("allomancy_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SCADRIAL_GLYPH.get()))
-                    .title(Component.translatable("creativetab.scadrialmod.allomancy_items"))
+                    .title(Component.translatable("creativetab.scadrialmod.allomancy"))
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(ModItems.COIN.get());
                         output.accept(ModItems.COIN_BAG.get());
                         output.accept(ModItems.GLASS_KNIFE.get());
                         output.accept(ModItems.MISTCLOAK.get());
+                        output.accept(ModItems.DUELLING_CANE.get());
 
                         output.accept(ModItems.STOPPER.get());
                         output.accept(ModItems.REFINED_GLASS.get());
@@ -273,9 +282,9 @@ public class ModCreativeModsTabs {
 
                     .build());
 
-    public static final RegistryObject<CreativeModeTab> FERUCHEMY_ITEMS_TAB = CREATIVE_MOD_TABS.register("feruchemy_items_tab",
+    public static final RegistryObject<CreativeModeTab> FERUCHEMY_TAB = CREATIVE_MOD_TABS.register("feruchemy_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SCADRIAL_GLYPH.get()))
-                    .title(Component.translatable("creativetab.scadrialmod.feruchemy_items"))
+                    .title(Component.translatable("creativetab.scadrialmod.feruchemy"))
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(ModItems.IRON_ARMBAND.get());
@@ -368,9 +377,9 @@ public class ModCreativeModsTabs {
 
                     .build());
 
-    public static final RegistryObject<CreativeModeTab> HEMALURGY_ITEMS_TAB = CREATIVE_MOD_TABS.register("hemalurgy_items_tab",
+    public static final RegistryObject<CreativeModeTab> HEMALURGY_TAB = CREATIVE_MOD_TABS.register("hemalurgys_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SCADRIAL_GLYPH.get()))
-                    .title(Component.translatable("creativetab.scadrialmod.hemalurgy_items"))
+                    .title(Component.translatable("creativetab.scadrialmod.hemalurgy"))
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(ModItems.IRON_SPIKE.get());

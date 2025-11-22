@@ -1,3 +1,206 @@
 {
-  "item.scadrialmod.scadrial_glyph": "Scadrial Glyph"
+  "creativetab.scadrialmod.scadrial": "Scadrial",
+
+  "item.scadrialmod.scadrial_glyph": "Scadrial Glyph",
+
+  "creativetab.scadrialmod.metalurgy": "Metalurgy",
+
+
+  "block.scadrialmod.cassiterite_ore": "Cassiterite Ore",
+  "block.scadrialmod.deepslate_cassiterite_ore": "Deepslate Cassiterite Ore",
+  "block.scadrialmod.sphalerite_ore": "Sphalerite Ore",
+  "block.scadrialmod.deepslate_sphalerite_ore": "Deepslate Sphalerite Ore",
+  "block.scadrialmod.chromite_ore": "Chromite Ore",
+  "block.scadrialmod.deepslate_chromite_ore": "Deepslate Chromite Ore",
+  "block.scadrialmod.bauxite_ore": "Bauxite Ore",
+  "block.scadrialmod.deepslate_bauxite_ore": "Deepslate Bauxite Ore",
+  "block.scadrialmod.greenockite_ore": "Greenockite Ore",
+  "block.scadrialmod.deepslate_greenockite_ore": "Deepslate Greenockite Ore",
+
+  "block.scadrialmod.galena_ore": "Galena Ore",
+  "block.scadrialmod.deepslate_galena_ore": "Deepslate Galena Ore",
+  "block.scadrialmod.stibnite_ore": "Stibnite Ore",
+  "block.scadrialmod.deepslate_stibnite_ore": "Deepslate Stibnite Ore",
+  "block.scadrialmod.pentlandite_ore": "Pentlandite Ore",
+  "block.scadrialmod.deepslate_pentlandite_ore": "Deepslate Pentlandite Ore",
+  "block.scadrialmod.quartz_ore": "Quartz Ore",
+  "block.scadrialmod.deepslate_quartz_ore": "Deepslate Quartz Ore",
+  "block.scadrialmod.dolomite_ore": "Dolomite Ore",
+  "block.scadrialmod.deepslate_dolomite_ore": "Deepslate Dolomite Ore",
+  "block.scadrialmod.pyrolusite_ore": "Pyrolusite Ore",
+  "block.scadrialmod.deepslate_pyrolusite_ore": "Deepslate Pyrolusite Ore",
+  "block.scadrialmod.bismuthinite_ore": "Bismuthinite Ore",
+  "block.scadrialmod.deepslate_bismuthinite_ore": "Deepslate Bismuthinite Ore",
+  "block.scadrialmod.argentite_ore": "Argentite Ore",
+  "block.scadrialmod.deepslate_argentite_ore": "Deepslate Argentite Ore",
+
+
+  "block.scadrialmod.raw_tin_block": "Raw Tin Block",
+  "block.scadrialmod.raw_zinc_block": "Raw Zinc Block",
+  "block.scadrialmod.raw_chromium_block": "Raw Chromium Block",
+  "block.scadrialmod.raw_aluminium_block": "Raw Aluminium Block",
+  "block.scadrialmod.raw_cadmium_block": "Raw Cadmium Block",
+
+  "block.scadrialmod.raw_lead_block": "Raw Lead Block",
+  "block.scadrialmod.raw_antimony_block": "Raw Antimony Block",
+  "block.scadrialmod.raw_nickel_block": "Raw Nickel Block",
+  "block.scadrialmod.raw_silicon_block": "Raw Silicon Block",
+  "block.scadrialmod.raw_magnesium_block": "Raw Magnesium Block",
+  "block.scadrialmod.raw_manganese_block": "Raw Manganese Block",
+  "block.scadrialmod.raw_bismuth_block": "Raw Bismuth Block",
+  "block.scadrialmod.raw_silver_block": "Raw Silver Block",
+
+
+  "item.scadrialmod.raw_tin": "Raw Tin",
+  "item.scadrialmod.raw_zinc": "Raw Zinc",
+  "item.scadrialmod.raw_chromium": "Raw Chromium",
+  "item.scadrialmod.raw_aluminium": "Raw Aluminium",
+  "item.scadrialmod.raw_cadmium": "Raw Cadmium",
+
+  "item.scadrialmod.raw_lead": "Raw Lead",
+  "item.scadrialmod.raw_antimony": "Raw Antimony",
+  "item.scadrialmod.raw_nickel": "Raw Nickel",
+  "item.scadrialmod.raw_silicon": "Raw Silicon",
+  "item.scadrialmod.raw_magnesium": "Raw Magnesium",
+  "item.scadrialmod.raw_manganese": "Raw Manganese",
+  "item.scadrialmod.raw_bismuth": "Raw Bismuth",
+  "item.scadrialmod.raw_silver": "Raw Silver",
+
+
+  "item.scadrialmod.cassiterite": "Cassiterite",
+  "item.scadrialmod.sphalerite": "Sphalerite",
+  "item.scadrialmod.chromite": "Chromite",
+  "item.scadrialmod.bauxite": "Bauxite",
+  "item.scadrialmod.greenockite": "Greenockite",
+
+  "item.scadrialmod.galena": "Galena",
+  "item.scadrialmod.stibnite": "Stibnite",
+  "item.scadrialmod.pentlandite": "Pentlandite",
+  "item.scadrialmod.dolomite": "Stibnite",
+  "item.scadrialmod.pyrolusite": "Pyrolusite",
+  "item.scadrialmod.bismuthinite": "Bismuthinite",
+  "item.scadrialmod.argentite": "Argentite",
+
+
+  "block.scadrialmod.steel_block": "Steel Block",
+  "block.scadrialmod.tin_block": "Tin Block",
+  "block.scadrialmod.pewter_block": "Pewter Block",
+  "block.scadrialmod.zinc_block": "Zinc Block",
+  "block.scadrialmod.brass_block": "Brass Block",
+  "block.scadrialmod.bronze_block": "Bronze Block",
+  "block.scadrialmod.chromium_block": "Chromium Block",
+  "block.scadrialmod.nicrosil_block": "Nicrosil Block",
+  "block.scadrialmod.aluminium_block": "Aluminium Block",
+  "block.scadrialmod.duraluminium_block": "Duralumin Block",
+  "block.scadrialmod.cadmium_block": "Cadmium Block",
+  "block.scadrialmod.bendalloy_block": "Bendalloy Block",
+  "block.scadrialmod.electrum_block": "Electrum Block",
+
+  "block.scadrialmod.lead_block": "Lead Block",
+  "block.scadrialmod.antimony_block": "Antimony Block",
+  "block.scadrialmod.nickel_block": "Nickel Block",
+  "block.scadrialmod.silicon_block": "Silicon Block",
+  "block.scadrialmod.magnesium_block": "Magnesium Block",
+  "block.scadrialmod.manganese_block": "Manganese Block",
+  "block.scadrialmod.bismuth_block": "Bismuth Block",
+  "block.scadrialmod.silver_block": "Silver Block",
+
+
+  "item.scadrialmod.steel_ingot": "Steel Ingot",
+  "item.scadrialmod.tin_ingot": "Tin Ingot",
+  "item.scadrialmod.pewter_ingot": "Pewter Ingot",
+  "item.scadrialmod.zinc_ingot": "Zinc Ingot",
+  "item.scadrialmod.brass_ingot": "Brass Ingot",
+  "item.scadrialmod.bronze_ingot": "Bronze Ingot",
+  "item.scadrialmod.chromium_ingot": "Chromium Ingot",
+  "item.scadrialmod.nicrosil_ingot": "Nicrosil Ingot",
+  "item.scadrialmod.aluminium_ingot": "Aluminium Ingot",
+  "item.scadrialmod.duralumin_ingot": "Duralumin Ingot",
+  "item.scadrialmod.cadmium_ingot": "Cadmium Ingot",
+  "item.scadrialmod.bendalloy_ingot": "Bendalloy Ingot",
+  "item.scadrialmod.electrum_ingot": "Electrum Ingot",
+
+  "item.scadrialmod.lead_ingot": "Lead Ingot",
+  "item.scadrialmod.antimony_ingot": "Antimony Ingot",
+  "item.scadrialmod.nickel_ingot": "Nickel Ingot",
+  "item.scadrialmod.silicon_ingot": "Silicon Ingot",
+  "item.scadrialmod.magnesium_ingot": "Magnesium Ingot",
+  "item.scadrialmod.manganese_ingot": "Manganese Ingot",
+  "item.scadrialmod.bismuth_ingot": "Bismuth Ingot",
+  "item.scadrialmod.silver_ingot": "Silver Ingot",
+
+
+  "item.scadrialmod.steel_nugget": "Steel Nugget",
+  "item.scadrialmod.tin_nugget": "Tin Nugget",
+  "item.scadrialmod.pewter_nugget": "Pewter Nugget",
+  "item.scadrialmod.zinc_nugget": "Zinc Nugget",
+  "item.scadrialmod.brass_nugget": "Brass Nugget",
+  "item.scadrialmod.bronze_nugget": "Bronze Nugget",
+  "item.scadrialmod.chromium_nugget": "Chromium Nugget",
+  "item.scadrialmod.nicrosil_nugget": "Nicrosil Nugget",
+  "item.scadrialmod.aluminium_nugget": "Aluminium Nugget",
+  "item.scadrialmod.duralumin_nugget": "Duralumin Nugget",
+  "item.scadrialmod.cadmium_nugget": "Cadmium Nugget",
+  "item.scadrialmod.bendalloy_nugget": "Bendalloy Nugget",
+  "item.scadrialmod.electrum_nugget": "Electrum Nugget",
+
+  "item.scadrialmod.lead_nugget": "Lead Nugget",
+  "item.scadrialmod.antimony_nugget": "Antimony Nugget",
+  "item.scadrialmod.nickel_nugget": "Nickel Nugget",
+  "item.scadrialmod.silicon_nugget": "Silicon Nugget",
+  "item.scadrialmod.magnesium_nugget": "Magnesium Nugget",
+  "item.scadrialmod.manganese_nugget": "Manganese Nugget",
+  "item.scadrialmod.bismuth_nugget": "Bismuth Nugget",
+  "item.scadrialmod.silver_nugget": "Silver Nugget",
+
+
+  "item.scadrialmod.steel_shavings": "Steel Shavings",
+  "item.scadrialmod.tin_shavings": "Tin Shavings",
+  "item.scadrialmod.pewter_shavings": "Pewter Shavings",
+  "item.scadrialmod.zinc_shavings": "Zinc Shavings",
+  "item.scadrialmod.brass_shavings": "Brass Shavings",
+  "item.scadrialmod.bronze_shavings": "Bronze Shavings",
+  "item.scadrialmod.chromium_shavings": "Chromium Shavings",
+  "item.scadrialmod.nicrosil_shavings": "Nicrosil Shavings",
+  "item.scadrialmod.aluminium_shavings": "Aluminium Shavings",
+  "item.scadrialmod.duralumin_shavings": "Duralumin Shavings",
+  "item.scadrialmod.cadmium_shavings": "Cadmium Shavings",
+  "item.scadrialmod.bendalloy_shavings": "Bendalloy Shavings",
+  "item.scadrialmod.electrum_shavings": "Electrum Shavings",
+
+  "item.scadrialmod.lead_shavings": "Lead Shavings",
+  "item.scadrialmod.antimony_shavings": "Antimony Shavings",
+  "item.scadrialmod.nickel_shavings": "Nickel Shavings",
+  "item.scadrialmod.silicon_shavings": "Silicon Shavings",
+  "item.scadrialmod.magnesium_shavings": "Magnesium Shavings",
+  "item.scadrialmod.manganese_shavings": "Manganese Shavings",
+  "item.scadrialmod.bismuth_shavings": "Bismuth Shavings",
+  "item.scadrialmod.silver_shavings": "Silver Shavings",
+
+
+  "item.scadrialmod.atium": "Atium",
+  "item.scadrialmod.lerasium": "Lerasium",
+
+  "item.scadrialmod.armonium": "Armonium",
+  "block.scadrialmod.armonium_block": "Armonium Block",
+  "item.scadrialmod.armonium_ingot": "Armonium Ingot",
+  "item.scadrialmod.armonium_nugget": "Armonium Nugget",
+  "item.scadrialmod.armonium_shavings": "Armonium Shavings",
+
+  "item.scadrialmod.trellium": "Trellium",
+  "block.scadrialmod.trellium_block": "Trellium Block",
+  "item.scadrialmod.trellium_ingot": "Trellium Ingot",
+  "item.scadrialmod.trellium_nugget": "Trellium Nugget",
+  "item.scadrialmod.trellium_shavings": "Trellium Shavings",
+
+
+  "creativetab.scadrialmod.allomancy": "Allomancy",
+
+
+
+  "creativetab.scadrialmod.feruchemy": "Feruchemy",
+
+
+
+  "creativetab.scadrialmod.hemalurgy": "Hemalurgy"
 }
