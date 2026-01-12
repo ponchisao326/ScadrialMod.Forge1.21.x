@@ -3,9 +3,52 @@ package net.rovalio.scadrialmod.player;
 import net.minecraft.util.RandomSource;
 import net.rovalio.scadrialmod.registry.MetalType;
 
+import java.util.NavigableMap;
+import java.util.TreeMap;
+
 public class CosmerePowerAssigner {
 
     private static final MetalType[] METAL_VALUES = MetalType.values();
+
+    // Tabla de probabilidad. Clave = Peso acumulado, Valor = ID del switch
+    private static final NavigableMap<Double, Integer> ARCHETYPE_WEIGHTS = new TreeMap<>();
+    private static final double TOTAL_WEIGHT;
+
+    static {
+        // ID 0: Drab (Sin poderes) - 50%
+        addArchetype(0, 50.0);
+        // ID 1: Misting (1 Metal Alomántico) - 20%
+        addArchetype(1, 20.0);
+        // ID 2: Ferring (1 Metal Feruquímico) - 20%
+        addArchetype(2, 20.0);
+        // ID 3: Twinborn (1 de cada) - 5%
+        addArchetype(3, 5.0);
+        // ID 4: Mistborn (Full Alomancia) - 2%
+        addArchetype(4, 2.0);
+        // ID 5: Full Feruchemist - 2%
+        addArchetype(5, 2.0);
+        // ID 6: Mistborn + 1 Metal Feruquímico (Muy raro) - 0.5%
+        addArchetype(6, 0.5);
+        // ID 7: Full Feruchemist + 1 Metal Alomántico (Muy raro) - 0.5%
+        addArchetype(7, 0.5);
+        // ID 8: Fullborn (Dios) - 0.05%
+        addArchetype(8, 0.05);
+
+        TOTAL_WEIGHT = ARCHETYPE_WEIGHTS.lastKey();
+    }
+
+    // Helper para configurar los pesos limpiamente
+    private static void addArchetype(int id, double weight) {
+        double currentTotal = ARCHETYPE_WEIGHTS.isEmpty() ? 0 : ARCHETYPE_WEIGHTS.lastKey();
+        ARCHETYPE_WEIGHTS.put(currentTotal + weight, id);
+    }
+
+    /**
+     * Constructor privado para evitar instanciación
+     */
+    private CosmerePowerAssigner() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static void assignInitialData(PlayerCosmereData data, RandomSource random) {
 
@@ -16,7 +59,7 @@ public class CosmerePowerAssigner {
         data.getFeruchemicalMetals().clear();
 
         // nextInt(9) genera de 0 a 8
-        int roll = random.nextInt(9);
+        int roll = rollArchetype(random);
 
         switch (roll) {
             case 0 -> data.setNoPowers(true);
@@ -96,5 +139,12 @@ public class CosmerePowerAssigner {
         if (!data.hasAllomancy() && !data.hasFeruchemy()) return 11; // Normal human
 
         return 12; // Misting/Ferring promedio
+    }
+
+    private static int rollArchetype(RandomSource random) {
+        // Genera un número entre 0 y el peso total
+        double value = random.nextDouble() * TOTAL_WEIGHT;
+        // Busca el escalón correspondiente
+        return ARCHETYPE_WEIGHTS.ceilingEntry(value).getValue();
     }
 }
