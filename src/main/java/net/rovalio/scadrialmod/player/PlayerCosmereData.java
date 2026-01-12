@@ -4,20 +4,37 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.RandomSource;
 import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 import net.rovalio.scadrialmod.registry.MetalType;
+import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.Map;
 
 @AutoRegisterCapability
 public class PlayerCosmereData {
 
+    // Constantes NBT para evitar errores de escritura (Typos)
+    private static final String TAG_FULL_ALLOMANCER = "FullAllomancer";
+    private static final String TAG_FULL_FERUCHEMIST = "FullFeruchemist";
+    private static final String TAG_NO_POWERS = "NoPowers";
+    private static final String TAG_INVESTITURE = "InvestitureUEA";
+    private static final String TAG_SPIRIT_SIZE = "SpiritWebSize";
+    private static final String TAG_SPIRIT_INTEGRITY = "SpiritWebIntegrity";
+    private static final String TAG_SPIRIT_AWAKENED = "SpiritWebAwakened";
+    private static final String TAG_INITIALIZED = "Initialized";
+    private static final String TAG_RESERVES = "MetalReserves";
+    private static final String TAG_ALLOMANTIC_METALS = "AllomanticMetals";
+    private static final String TAG_FERUCHEMICAL_METALS = "FeruchemicalMetals";
+
+    // Variables de instancia
     private final EnumSet<MetalType> allomanticMetals = EnumSet.noneOf(MetalType.class);
     private final EnumSet<MetalType> feruchemicalMetals = EnumSet.noneOf(MetalType.class);
+
+    // OPTIMIZACIÓN: EnumMap es mucho más eficiente que HashMap para claves Enum
+    private final EnumMap<MetalType, Integer> metalReserves = new EnumMap<>(MetalType.class);
 
     private boolean fullAllomancer;
     private boolean fullFeruchemist;
     private double investitureUEA;
-    private boolean noPowers; // Si es true, es un Drab o alguien sin nada
+    private boolean noPowers;
 
     private int spiritWebSize;
     private int spiritWebIntegrity;
@@ -25,45 +42,40 @@ public class PlayerCosmereData {
     private boolean initialized;
 
     // --- GETTERS ---
-
-    public boolean hasNoPowers() {
-        return noPowers;
-    }
+    public boolean hasNoPowers() { return this.noPowers; }
 
     public boolean hasAllomancy() {
-        return !noPowers && (fullAllomancer || !allomanticMetals.isEmpty());
+        return !this.noPowers && (this.fullAllomancer || !this.allomanticMetals.isEmpty());
     }
 
     public boolean hasFeruchemy() {
-        return !noPowers && (fullFeruchemist || !feruchemicalMetals.isEmpty());
+        return !this.noPowers && (this.fullFeruchemist || !this.feruchemicalMetals.isEmpty());
     }
 
-    public boolean isFullAllomancer() { return fullAllomancer; }
-    public boolean isFullFeruchemist() { return fullFeruchemist; }
+    public boolean isFullAllomancer() { return this.fullAllomancer; }
+    public boolean isFullFeruchemist() { return this.fullFeruchemist; }
 
-    public EnumSet<MetalType> getAllomanticMetals() { return allomanticMetals; }
-    public EnumSet<MetalType> getFeruchemicalMetals() { return feruchemicalMetals; }
-
-    public double getInvestitureUEA() { return investitureUEA; }
-    public int getSpiritWebSize() { return spiritWebSize; }
-    public int getSpiritWebIntegrity() { return spiritWebIntegrity; }
-    public boolean isSpiritWebAwakened() { return spiritWebAwakened; }
-    public boolean isInitialized() { return initialized; }
+    public EnumSet<MetalType> getAllomanticMetals() { return this.allomanticMetals; }
+    public EnumSet<MetalType> getFeruchemicalMetals() { return this.feruchemicalMetals; }
+    public double getInvestitureUEA() { return this.investitureUEA; }
+    public int getSpiritWebSize() { return this.spiritWebSize; }
+    public int getSpiritWebIntegrity() { return this.spiritWebIntegrity; }
+    public boolean isSpiritWebAwakened() { return this.spiritWebAwakened; }
+    public boolean isInitialized() { return this.initialized; }
 
     // --- LOGIC ---
-
     public void initializeIfNeeded(RandomSource random) {
-        if (!initialized) {
+        if (!this.initialized) {
             CosmerePowerAssigner.assignInitialData(this, random);
             this.initialized = true;
         }
     }
 
     // --- SETTERS ---
-
-    public void setNoPowers(boolean value) {
-        this.noPowers = value;
-        if (value) {
+    // Usamos 'this.' explícitamente para claridad y evitar confusiones
+    public void setNoPowers(boolean noPowers) {
+        this.noPowers = noPowers;
+        if (noPowers) {
             this.fullAllomancer = false;
             this.fullFeruchemist = false;
             this.allomanticMetals.clear();
@@ -71,95 +83,107 @@ public class PlayerCosmereData {
         }
     }
 
-    public void setFullAllomancer(boolean value) {
-        if (noPowers) return; // No puede serlo si no tiene poderes
-        this.fullAllomancer = value;
-        if (value) allomanticMetals.clear();
+    public void setFullAllomancer(boolean fullAllomancer) {
+        if (this.noPowers) return;
+        this.fullAllomancer = fullAllomancer;
+        if (fullAllomancer) this.allomanticMetals.clear();
     }
 
-    public void setFullFeruchemist(boolean value) {
-        if (noPowers) return;
-        this.fullFeruchemist = value;
-        if (value) feruchemicalMetals.clear();
+    public void setFullFeruchemist(boolean fullFeruchemist) {
+        if (this.noPowers) return;
+        this.fullFeruchemist = fullFeruchemist;
+        if (fullFeruchemist) this.feruchemicalMetals.clear();
     }
 
     public void addAllomanticMetal(MetalType metal) {
-        if (!fullAllomancer && !noPowers) {
-            allomanticMetals.add(metal);
+        if (!this.fullAllomancer && !this.noPowers) {
+            this.allomanticMetals.add(metal);
         }
     }
 
     public void addFeruchemicalMetal(MetalType metal) {
-        if (!fullFeruchemist && !noPowers) {
-            feruchemicalMetals.add(metal);
+        if (!this.fullFeruchemist && !this.noPowers) {
+            this.feruchemicalMetals.add(metal);
         }
     }
 
-    public void setInvestitureUEA(double value) { this.investitureUEA = value; }
-    public void setSpiritWebSize(int value) { this.spiritWebSize = value; }
-    public void setSpiritWebIntegrity(int value) { this.spiritWebIntegrity = Math.max(0, Math.min(100, value)); }
+    public void setInvestitureUEA(double investitureUEA) { this.investitureUEA = investitureUEA; }
+    public void setSpiritWebSize(int spiritWebSize) { this.spiritWebSize = spiritWebSize; }
+
+    public void setSpiritWebIntegrity(int spiritWebIntegrity) {
+        this.spiritWebIntegrity = Math.max(0, Math.min(100, spiritWebIntegrity));
+    }
+
     public void awakenSpiritWeb() { this.spiritWebAwakened = true; }
     public void markInitialized() { this.initialized = true; }
 
-    private final Map<MetalType, Integer> metalReserves = new HashMap<>();
+    // Gestión de Reservas
+    public void clearReserves() { this.metalReserves.clear(); }
 
-    public void clearReserves() {
-        metalReserves.clear();
+    public void setReserve(MetalType type, int amount) {
+        this.metalReserves.put(type, amount);
+    }
+
+    public int getReserve(MetalType type) {
+        return this.metalReserves.getOrDefault(type, 0);
     }
 
     // --- NBT (GUARDADO) ---
-
     public void saveNBT(CompoundTag tag) {
-        tag.putBoolean("FullAllomancer", fullAllomancer);
-        tag.putBoolean("FullFeruchemist", fullFeruchemist);
-        tag.putBoolean("NoPowers", noPowers);
-        tag.putDouble("InvestitureUEA", investitureUEA);
-        tag.putInt("SpiritWebSize", spiritWebSize);
-        tag.putInt("SpiritWebIntegrity", spiritWebIntegrity);
-        tag.putBoolean("SpiritWebAwakened", spiritWebAwakened);
-        tag.putBoolean("Initialized", initialized);
+        tag.putBoolean(TAG_FULL_ALLOMANCER, this.fullAllomancer);
+        tag.putBoolean(TAG_FULL_FERUCHEMIST, this.fullFeruchemist);
+        tag.putBoolean(TAG_NO_POWERS, this.noPowers);
+        tag.putDouble(TAG_INVESTITURE, this.investitureUEA);
+        tag.putInt(TAG_SPIRIT_SIZE, this.spiritWebSize);
+        tag.putInt(TAG_SPIRIT_INTEGRITY, this.spiritWebIntegrity);
+        tag.putBoolean(TAG_SPIRIT_AWAKENED, this.spiritWebAwakened);
+        tag.putBoolean(TAG_INITIALIZED, this.initialized);
 
         CompoundTag reservesTag = new CompoundTag();
-        metalReserves.forEach((metal, amount) -> {
+        this.metalReserves.forEach((metal, amount) -> {
             reservesTag.putInt(metal.name(), amount);
         });
-        tag.put("MetalReserves", reservesTag);
+        tag.put(TAG_RESERVES, reservesTag);
 
-        tag.putIntArray("AllomanticMetals", allomanticMetals.stream().mapToInt(Enum::ordinal).toArray());
-        tag.putIntArray("FeruchemicalMetals", feruchemicalMetals.stream().mapToInt(Enum::ordinal).toArray());
+        tag.putIntArray(TAG_ALLOMANTIC_METALS, this.allomanticMetals.stream().mapToInt(Enum::ordinal).toArray());
+        tag.putIntArray(TAG_FERUCHEMICAL_METALS, this.feruchemicalMetals.stream().mapToInt(Enum::ordinal).toArray());
     }
 
     public void loadNBT(CompoundTag tag) {
-        fullAllomancer = tag.getBoolean("FullAllomancer");
-        fullFeruchemist = tag.getBoolean("FullFeruchemist");
-        noPowers = tag.getBoolean("NoPowers");
-        investitureUEA = tag.getDouble("InvestitureUEA");
-        spiritWebSize = tag.getInt("SpiritWebSize");
-        spiritWebIntegrity = tag.getInt("SpiritWebIntegrity");
-        spiritWebAwakened = tag.getBoolean("SpiritWebAwakened");
-        initialized = tag.getBoolean("Initialized");
+        this.fullAllomancer = tag.getBoolean(TAG_FULL_ALLOMANCER);
+        this.fullFeruchemist = tag.getBoolean(TAG_FULL_FERUCHEMIST);
+        this.noPowers = tag.getBoolean(TAG_NO_POWERS);
+        this.investitureUEA = tag.getDouble(TAG_INVESTITURE);
+        this.spiritWebSize = tag.getInt(TAG_SPIRIT_SIZE);
+        this.spiritWebIntegrity = tag.getInt(TAG_SPIRIT_INTEGRITY);
+        this.spiritWebAwakened = tag.getBoolean(TAG_SPIRIT_AWAKENED);
+        this.initialized = tag.getBoolean(TAG_INITIALIZED);
 
-        metalReserves.clear();
-        if (tag.contains("MetalReserves")) {
-            CompoundTag reservesTag = tag.getCompound("MetalReserves");
+        this.metalReserves.clear();
+        if (tag.contains(TAG_RESERVES)) {
+            CompoundTag reservesTag = tag.getCompound(TAG_RESERVES);
             for (String key : reservesTag.getAllKeys()) {
                 try {
                     MetalType type = MetalType.valueOf(key);
-                    metalReserves.put(type, reservesTag.getInt(key));
+                    this.metalReserves.put(type, reservesTag.getInt(key));
                 } catch (IllegalArgumentException e) {
-                    // Ignorar metales que ya no existan
+                    // Ignorar metales que ya no existan (versioning safety)
                 }
             }
         }
 
-        allomanticMetals.clear();
-        feruchemicalMetals.clear();
+        this.allomanticMetals.clear();
+        this.feruchemicalMetals.clear();
 
-        for (int i : tag.getIntArray("AllomanticMetals")) {
-            if (i >= 0 && i < MetalType.values().length) allomanticMetals.add(MetalType.values()[i]);
+        for (int i : tag.getIntArray(TAG_ALLOMANTIC_METALS)) {
+            if (i >= 0 && i < MetalType.values().length) {
+                this.allomanticMetals.add(MetalType.values()[i]);
+            }
         }
-        for (int i : tag.getIntArray("FeruchemicalMetals")) {
-            if (i >= 0 && i < MetalType.values().length) feruchemicalMetals.add(MetalType.values()[i]);
+        for (int i : tag.getIntArray(TAG_FERUCHEMICAL_METALS)) {
+            if (i >= 0 && i < MetalType.values().length) {
+                this.feruchemicalMetals.add(MetalType.values()[i]);
+            }
         }
     }
 }
