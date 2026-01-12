@@ -5,6 +5,8 @@ import net.rovalio.scadrialmod.registry.MetalType;
 
 public class CosmerePowerAssigner {
 
+    private static final MetalType[] METAL_VALUES = MetalType.values();
+
     public static void assignInitialData(PlayerCosmereData data, RandomSource random) {
 
         data.setNoPowers(false);
@@ -52,8 +54,7 @@ public class CosmerePowerAssigner {
     }
 
     private static MetalType randomMetal(RandomSource random) {
-        MetalType[] values = MetalType.values();
-        return values[random.nextInt(values.length)];
+        return METAL_VALUES[random.nextInt(METAL_VALUES.length)];
     }
 
     private static double calculateInvestiture(PlayerCosmereData data, RandomSource random) {
