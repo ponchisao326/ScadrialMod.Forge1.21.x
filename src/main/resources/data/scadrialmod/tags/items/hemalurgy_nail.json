@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "scadrialmod:iron_nail",
+    "scadrialmod:steel_nail",
+    "scadrialmod:tin_nail",
+    "scadrialmod:pewter_nail",
+
+    "scadrialmod:zinc_nail",
+    "scadrialmod:brass_nail",
+    "scadrialmod:copper_nail",
+    "scadrialmod:bronze_nail",
+
+    "scadrialmod:chromium_nail",
+    "scadrialmod:nicrosil_nail",
+    "scadrialmod:aluminium_nail",
+    "scadrialmod:duralumin_nail",
+
+    "scadrialmod:cadmium_nail",
+    "scadrialmod:bendalloy_nail",
+    "scadrialmod:gold_nail",
+    "scadrialmod:electrum_nail"
+  ]
+}

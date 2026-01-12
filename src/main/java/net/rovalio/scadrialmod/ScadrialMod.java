@@ -1,20 +1,11 @@
 package net.rovalio.scadrialmod;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -24,12 +15,12 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import net.rovalio.scadrialmod.block.ModBlocks;
-import net.rovalio.scadrialmod.item.ModCreativeModsTabs;
+import net.rovalio.scadrialmod.commands.ScadrialCommands;
+import net.rovalio.scadrialmod.item.ModCreativeModeTabs;
 import net.rovalio.scadrialmod.item.ModItems;
+import net.rovalio.scadrialmod.player.PlayerCosmereData;
+import net.rovalio.scadrialmod.player.PlayerDataProvider;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -48,10 +39,12 @@ public class ScadrialMod
 
         MinecraftForge.EVENT_BUS.register(this);
 
-        ModCreativeModsTabs.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        MinecraftForge.EVENT_BUS.register(this);
 
         modEventBus.addListener(this::addCreative);
 
@@ -66,17 +59,26 @@ public class ScadrialMod
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.SCADRIAL_GLYPH);
-        }
 
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModBlocks.STEEL_BLOCK);
         }
     }
+
+
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
 
+    }
+
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public static class ForgeEvents {
+        @SubscribeEvent
+        public static void onRegisterCommands(RegisterCommandsEvent event) {
+            ScadrialCommands.register(event.getDispatcher());
+            LOGGER.info("Comandos de ScadrialMod registrados.");
+        }
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

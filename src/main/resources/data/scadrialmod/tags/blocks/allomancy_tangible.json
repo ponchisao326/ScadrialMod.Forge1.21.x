@@ -1,0 +1,36 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:iron_ore",
+    "minecraft:deepslate_iron_ore",
+    "scadrialmod:cassiterite_ore",
+    "scadrialmod:deepslate_cassiterite_ore",
+    "scadrialmod:sphalerite_ore",
+    "scadrialmod:deepslate_sphalerite_ore",
+    "minecraft:copper_ore",
+    "minecraft:deepslate_copper_ore",
+    "scadrialmod:chromite_ore",
+    "scadrialmod:deepslate_chromite_ore",
+    "scadrialmod:bauxite_ore",
+    "scadrialmod:deepslate_bauxite_ore",
+    "scadrialmod:greenockite_ore",
+    "scadrialmod:deepslate_greenockite_ore",
+    "minecraft:gold_ore",
+    "minecraft:deepslate_gold_ore",
+
+    "scadrialmod:galena_ore",
+    "scadrialmod:deepslate_galena_ore",
+    "scadrialmod:stibnite_ore",
+    "scadrialmod:deepslate_stibnite_ore",
+    "scadrialmod:pentlandite_ore",
+    "scadrialmod:deepslate_pentlandite_ore",
+    "scadrialmod:dolomite_ore",
+    "scadrialmod:deepslate_dolomite_ore",
+    "scadrialmod:pyrolusite_ore",
+    "scadrialmod:deepslate_pyrolusite_ore",
+    "scadrialmod:bismuthinite_ore",
+    "scadrialmod:deepslate_bismuthinite_ore",
+    "scadrialmod:argentite_ore",
+    "scadrialmod:deepslate_argentite_ore"
+  ]
+}

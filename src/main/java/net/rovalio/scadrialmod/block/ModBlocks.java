@@ -204,7 +204,7 @@ public class ModBlocks {
     //Aluminium
     public static final RegistryObject<Block> BAUXITE_ORE = registerBlock("bauxite_ore",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+                    .strength(1).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> DEEPSLATE_BAUXITE_ORE = registerBlock("deepslate_bauxite_ore",
             () -> new Block(BlockBehaviour.Properties.of()

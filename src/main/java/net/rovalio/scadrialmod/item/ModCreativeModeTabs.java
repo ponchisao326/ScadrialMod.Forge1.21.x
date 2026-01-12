@@ -11,7 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.rovalio.scadrialmod.ScadrialMod;
 import net.rovalio.scadrialmod.block.ModBlocks;
 
-public class ModCreativeModsTabs {
+public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MOD_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ScadrialMod.MOD_ID);
 
@@ -33,6 +33,8 @@ public class ModCreativeModsTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SCADRIAL_GLYPH.get()))
                     .title(Component.translatable("creativetab.scadrialmod.metalurgy"))
                     .displayItems((itemDisplayParameters, output) -> {
+
+                        output.accept(ModItems.SCADRIAL_GLYPH.get());
 
                     //Ores
                         output.accept(Items.IRON_ORE);
