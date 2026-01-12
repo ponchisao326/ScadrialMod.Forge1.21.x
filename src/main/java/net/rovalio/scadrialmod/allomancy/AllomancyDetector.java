@@ -21,7 +21,7 @@ public class AllomancyDetector {
         // Usamos eyePosition para que las líneas salgan de los ojos, no de los pies
         Vec3 origin = player.getEyePosition();
 
-        // 1. Optimización: Reducir el AABB a enteros para el bucle
+        // Optimización: Reducir el AABB a enteros para el bucle
         int minX = Mth.floor(origin.x - radius);
         int maxX = Mth.ceil(origin.x + radius);
         int minY = Mth.floor(origin.y - radius);
