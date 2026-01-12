@@ -1,6 +1,7 @@
 package net.rovalio.scadrialmod.player;
 
 import net.minecraft.util.RandomSource;
+import net.rovalio.scadrialmod.Config;
 import net.rovalio.scadrialmod.registry.MetalType;
 
 import java.util.NavigableMap;
@@ -101,44 +102,51 @@ public class CosmerePowerAssigner {
     }
 
     private static double calculateInvestiture(PlayerCosmereData data, RandomSource random) {
-        // Ordenamos de MÁS específico (Fullborn) a MENOS específico para evitar errores lógicos
-
         if (data.hasNoPowers()) {
-            return 1.0; // Drab o similar
+            return 1.0;
         }
 
-        // Fullborn (Nacido completo)
+        // Fullborn
         if (data.isFullAllomancer() && data.isFullFeruchemist()) {
-            return 15 + random.nextDouble() * 5;
+            return Config.INVESTITURE_FULLBORN_BASE.get() + random.nextDouble() * 5.0;
         }
-        // Full Allomancer (Nacido de la bruma) o Full Feruchemist
+        // Mistborn o Full Feruchemist
         if (data.isFullAllomancer() || data.isFullFeruchemist()) {
-            return 10 + random.nextDouble() * 4;
+            return Config.INVESTITURE_MISTBORN_BASE.get() + random.nextDouble() * 4.0;
         }
-        // Twinborn (Nacidoble: tiene ambos pero no full)
+        // Twinborn
         if (data.hasAllomancy() && data.hasFeruchemy()) {
-            return 8 + random.nextDouble() * 2;
+            return Config.INVESTITURE_TWINBORN_BASE.get() + random.nextDouble() * 2.0;
         }
-        // Misting o Ferring (Solo uno de los dos y no full)
+        // Misting o Ferring
         if (data.hasAllomancy() || data.hasFeruchemy()) {
-            return 4 + random.nextDouble() * 4;
+            return Config.INVESTITURE_MISTING_BASE.get() + random.nextDouble() * 4.0;
         }
 
-        return 4.0; // Fallback
+        return Config.INVESTITURE_MISTING_BASE.get();
     }
 
     private static int calculateSpiritWebBase(PlayerCosmereData data) {
-        if (data.isFullAllomancer() && data.isFullFeruchemist()) return 20;
-        if (data.isFullAllomancer() && !data.hasFeruchemy()) return 19;
-        if (!data.hasAllomancy() && data.isFullFeruchemist()) return 19;
-        if (data.isFullAllomancer() || data.isFullFeruchemist()) return 18;
+        // Obtenemos los valores desde la Configuración
+        int valFullborn = Config.SPIRIT_FULLBORN.get();
+        int valMistborn = Config.SPIRIT_MISTBORN.get();
+        int valTwinborn = Config.SPIRIT_TWINBORN.get();
+        int valMisting = Config.SPIRIT_MISTING.get();
+        int valHuman = Config.SPIRIT_HUMAN.get();
 
-        if (data.hasAllomancy() && data.hasFeruchemy()) return 15; // Twinborn fuerte
-        if (data.hasAllomancy() && !data.hasFeruchemy()) return 13;
+        if (data.isFullAllomancer() && data.isFullFeruchemist()) return valFullborn;
 
-        if (!data.hasAllomancy() && !data.hasFeruchemy()) return 11; // Normal human
+        // Mistborn puro o Feruquímico puro
+        if ((data.isFullAllomancer() && !data.hasFeruchemy()) ||
+                (!data.hasAllomancy() && data.isFullFeruchemist())) return valMistborn;
 
-        return 12; // Misting/Ferring promedio
+        // Caso híbrido fuerte (Mistborn con un clavo, etc.) - Usamos un valor intermedio o el de Mistborn - 1
+        if (data.isFullAllomancer() || data.isFullFeruchemist()) return valMistborn - 1;
+
+        if (data.hasAllomancy() && data.hasFeruchemy()) return valTwinborn;
+        if (data.hasAllomancy() || data.hasFeruchemy()) return valMisting;
+
+        return valHuman;
     }
 
     private static int rollArchetype(RandomSource random) {

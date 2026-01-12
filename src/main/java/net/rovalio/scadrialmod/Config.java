@@ -37,6 +37,36 @@ public class Config
             .comment("A list of items to log on common setup.")
             .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
 
+    public static final ForgeConfigSpec.ConfigValue<Double> INVESTITURE_FULLBORN_BASE = BUILDER
+            .comment("Base investiture for Fullborns")
+            .define("investiture.fullborn.base", 15.0);
+    public static final ForgeConfigSpec.ConfigValue<Double> INVESTITURE_MISTBORN_BASE = BUILDER
+            .comment("Base investiture for Mistborn/Full Feruchemists")
+            .define("investiture.mistborn.base", 10.0);
+    public static final ForgeConfigSpec.ConfigValue<Double> INVESTITURE_TWINBORN_BASE = BUILDER
+            .comment("Base investiture for Twinborns")
+            .define("investiture.twinborn.base", 8.0);
+    public static final ForgeConfigSpec.ConfigValue<Double> INVESTITURE_MISTING_BASE = BUILDER
+            .comment("Base investiture for Mistings/Ferrings")
+            .define("investiture.misting.base", 4.0);
+
+    // Configuración del SpiritWeb
+    public static final ForgeConfigSpec.ConfigValue<Integer> SPIRIT_FULLBORN = BUILDER
+            .comment("SpiritWeb strength for Fullborns")
+            .define("spiritweb.fullborn", 20);
+    public static final ForgeConfigSpec.ConfigValue<Integer> SPIRIT_MISTBORN = BUILDER
+            .comment("SpiritWeb strength for Mistborn/Full Feruchemists")
+            .define("spiritweb.mistborn", 19);
+    public static final ForgeConfigSpec.ConfigValue<Integer> SPIRIT_TWINBORN = BUILDER
+            .comment("SpiritWeb strength for Twinborns")
+            .define("spiritweb.twinborn", 15);
+    public static final ForgeConfigSpec.ConfigValue<Integer> SPIRIT_MISTING = BUILDER
+            .comment("SpiritWeb strength for Mistings/Ferrings")
+            .define("spiritweb.misting", 13);
+    public static final ForgeConfigSpec.ConfigValue<Integer> SPIRIT_HUMAN = BUILDER
+            .comment("SpiritWeb strength for regular humans")
+            .define("spiritweb.human", 11);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static boolean logDirtBlock;
